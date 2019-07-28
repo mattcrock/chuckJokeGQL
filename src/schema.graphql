@@ -1,3 +1,4 @@
+# Joke defenition
 type Joke {
     icon_url: String
     id: String
@@ -5,8 +6,8 @@ type Joke {
     value: String
   }
 
+# gql Queries
   type Query {
-    hello(subject: String): String
     randomJoke: Joke
     categories: [String]
     jokeByCategory(category:String): Joke

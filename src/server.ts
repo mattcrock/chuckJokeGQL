@@ -33,13 +33,12 @@ export default async (port: number): Promise<Server> => {
   const app = express();
 
   const server: Server = createServer(app);
-
   app.use('*', cors({ origin: 'http://localhost:3000' }));
-
+  // Define the data source using the custom resolvers
   const dataSources = () => ({
     chuckNorrisAPI: new API()
   });
-
+  // Create the apollo server with the schema and the custom resolvers
   const apolloServer = new ApolloServer({
     playground: true,
     schema,
@@ -54,10 +53,7 @@ export default async (port: number): Promise<Server> => {
       graphiqlExpress({
         endpointURL: '/graphql',
         query:
-          '# Welcome to your own GraphQL server!\n#\n' +
-          '# Press Play button above to execute GraphQL query\n#\n' +
-          '# You can start editing source code and see results immediately\n\n' +
-          'query hello($subject:String) {\n  hello(subject: $subject)\n}',
+          '',
         subscriptionsEndpoint: `ws://localhost:${port}/subscriptions`,
         variables: { subject: 'World' }
       })
