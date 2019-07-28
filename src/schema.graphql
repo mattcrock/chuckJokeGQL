@@ -1,0 +1,13 @@
+type Joke {
+    icon_url: String
+    id: String
+    url: String
+    value: String
+  }
+
+  type Query {
+    hello(subject: String): String
+    randomJoke: Joke
+    categories: [String]
+    jokeByCategory(category:String): Joke
+  }
